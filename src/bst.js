@@ -2,6 +2,30 @@ export default class BST {
   constructor() {
     this.root = null;
   }
+  remove(removeNode) {
+    if (this.root === null) {
+      return true;
+    } else {
+        let currentNode = this.root;
+        while (true) {
+          if (currentNode.data === removeNode.data) {
+            if (currentNode.left === null && currentNode.right === null) {
+              currentNode = null;
+              return 'no child'
+            }
+            return true;
+          } 
+          else if (currentNode.data > removeNode.data) {
+            currentNode = currentNode.left;
+          } else if (currentNode.data < removeNode.data) {
+            currentNode = currentNode.right;
+          }
+          if (currentNode === null) {
+            return false; //could not find node.
+          }
+        }
+      }
+    } 
   search(value) {
     if (this.root.data === value) {
       return true;
@@ -52,4 +76,4 @@ export default class BST {
       }
     }
   }
-  }
+}
